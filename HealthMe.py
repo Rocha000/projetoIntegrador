@@ -1,8 +1,9 @@
+
 def CalculoIMC(peso,altura):
     imc = peso/(altura*altura)
     return imc
 def ComparacaoImc(imc):
-    print (' IMC\t\tClassificação\n\n [18.5]\t\t[Baixo Peso]\n [25 a  29.9]\t[Excesso de Peso]\n [30 a 34.9]\t[Obesidade Classe 1]\n [35 a 39.9]\t[Obesidade Classe 2]\n [>=40]\t[Obesidade Classe 3]')
+    print (' IMC\tClassificação\n\n [18.5]\t\t\t[Baixo Peso]\n [25 a  29.9]\t[Excesso de Peso]\n [30 a 34.9]\t[Obesidade Classe 1]\n [35 a 39.9]\t[Obesidade Classe 2]\n [>=40]\t\t\t[Obesidade Classe 3]\n\n')
 
     if imc<18.5:
         print('Baixo peso')
@@ -34,7 +35,7 @@ def CalculoCalorias(peso,altura,idade):
             fatorAtividade = 1.55
         if taxaAtividade == "A":
             fatorAtividade = 1.725
-        if taxaAtividade == "A":
+        if taxaAtividade == "E":
             fatorAtividade = 1.9
 
     sexo = " "
@@ -48,14 +49,14 @@ def CalculoCalorias(peso,altura,idade):
 
             totalCalorias = fatorAtividade * (655.1 + (1.8 * altura) + (9.6 * peso) - (4.7 * idade))
 
-    print("\nSão necessárias {:.2f} calorias por dia".format(totalCalorias))
+    print("\n\nSão necessárias {:.2f} calorias por dia".format(totalCalorias))
     return totalCalorias
 def ComparacaoCalorias (caloriasNes):
     caloriasTotal = 0
     digitouCorretamente = False
     while not digitouCorretamente :
         try:
-            refeicoes = int(input('\n\tInsira a quantas refeições você fez: '))
+            refeicoes = int(input('\n\nInsira a quantas refeições você fez: '))
             if (refeicoes > 0):
                 digitouCorretamente = True
             else:
@@ -68,7 +69,7 @@ def ComparacaoCalorias (caloriasNes):
         i = 1    
         while i <= refeicoes:
             try:    
-                calorias = int(input(f'\n\tInsira a quantidade de calorias, em kcal, que vc ingeriu na {i}ª refeição:\n '))
+                calorias = int(input(f'Insira a quantidade de calorias, em kcal, que vc ingeriu na {i}ª refeição: '))
                 if (calorias > 0):
                     digitouCorretamente = True
                     i+=1
@@ -77,13 +78,15 @@ def ComparacaoCalorias (caloriasNes):
                     print('Valor inválido!')    
             except ValueError:
                 print('Valor inválido!')          
-    print(f'O valor total de calorias consumidas foi {caloriasTotal} kcal')       
+    print(f'\n\nO valor total de calorias consumidas foi {caloriasTotal:.2f} kcal')       
     ideal = caloriasNes-caloriasTotal
     if ideal<0:
         ideal=ideal*-1
-        print(f"Você ingeriu {ideal} a mais que o nescesario")
+        print(f"\nVocê ingeriu {ideal:.2f} kcal a mais que o nescesario")
     else:
-        print(f"A quantidade ideal de calorias é de {ideal}")
+        print(f"\nVocê deveria ingerir mais {ideal:.2f} kcal")
+
+
 
 if __name__ == '__main__':
     digitouCorretamente = False
@@ -91,7 +94,7 @@ if __name__ == '__main__':
         try:
             altura = float(input("\nInforme sua altura: "))
 
-            if (altura > 2.5):
+            if (altura < 2.5):
                 altura = altura * 100
                 digitouCorretamente = True
 
